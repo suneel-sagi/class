@@ -1,0 +1,7 @@
+FROM java:8
+LABEL env="test"
+ENV test /data/app
+RUN mkdir -p $test
+ADD ./target/onlinebookstore.war $test
+WORKDIR $test 
+CMD ["java","-jar""onlinebookstore.war"]
