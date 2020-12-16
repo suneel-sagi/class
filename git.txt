@@ -1,0 +1,155 @@
+git commands
+
+git init (Initialized empty Git repository with .git)
+
+git clone githuburl ( copy of the target repository. )
+git add . or filename
+git commit -m "commit msg"
+git push origin master
+git rm -chached filename ( added file back to )
+
+git branch branch_name (create new_branch)
+git checkout branch_name (switch one branch to another branch)
+git checkout -b branch_name (at a time create branch and switched to created branch)
+ git branch (branch status)
+
+11/26/2020
+-----------
+ git merge  ---> 
+ git rebase --->
+ git revert --->
+ git reset  --->
+ cherry-pic --->
+ 
+11/27/2020
+------------
+  git cherry-pic
+  git merge
+  git rebase
+  install maven jenkins apchetomcat docker on linux
+  
+  install maven on ubuntu 18
+  ----------------------------
+  apt install java-1.8 openjdksudo 
+  
+  apt-get -y install maven
+  or
+ wget https://downloads.apache.org/maven/maven-3/3.6.3/binaries/apache-maven-3.6.3-bin.tar.gz
+  tar -xzvf apache-maven-3.6.3-bin.tar.gz
+  cd apache-maven-3.6.3/
+  export PATH=$PATH:/opt/apache-maven-3.6.3/bin
+  mvn --version
+  
+  install jenkins on ubuntu 18
+  ----------------------------
+  wget -q -O - https://pkg.jenkins.io/debian-stable/jenkins.io.key | sudo apt-key add -
+sudo sh -c 'echo deb https://pkg.jenkins.io/debian-stable binary/ > \
+    /etc/apt/sources.list.d/jenkins.list'
+sudo apt-get update
+sudo apt-get install jenkins
+cat /var/lib/jenkins/secrets/initialAdminPassword
+sudo ufw allow 8080/tcp
+sudo ufw status verbose
+Uncomplicated Firewall
+sudo ufw status numbered
+sudo ufw delete 3
+hostip:8080
+
+  install docker on ubuntu 18
+-------------------------------
+#Update the apt package index and install packages to allow apt to use a repository over HTTPS:
+sudo apt-get update
+sudo apt-get install \
+    apt-transport-https \
+    ca-certificates \
+    curl \
+    gnupg-agent \
+    software-properties-common
+#Add Docker’s official GPG key:
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+
+sudo add-apt-repository \
+   "deb [arch=amd64] https://download.docker.com/linux/ubuntu \
+   $(lsb_release -cs) \
+   stable"
+sudo apt-get install docker-ce docker-ce-cli containerd.io
+
+systemctl enable docker
+
+
+sudo usermod -aG docker your-user
+
+ install apache tomcat
+ -----------------------
+ sudo wget https://downloads.apache.org/tomcat/tomcat-8/v8.5.60/bin/apache-tomcat-8.5.60.tar.gz
+ sudo tar -xvzf apache-tomcat-8.5.60.tar.gz
+ cd apache-tomcat-8/conf
+ vi serice.xml --> change port 8080 to requried
+ cd bin
+ sh startup.sh now started tom cat server
+ goto browser type ip:tomcat port
+ 
+ 
+ 
+nexus installation
+==================== 
+yum remove java* -y
+sudo yum install java-1.8.0-openjdk.x86_64 -y
+Download and setup nexus stable version
+cd /opt
+wget https://sonatype-download.global.ssl.fastly.net/nexus/3/nexus-3.0.2-02-unix.tar.gz
+tar -zxvf nexus-3.0.2-02-unix.tar.gz
+mv /opt/nexus-3.0.2-02 /opt/nexus
+
+sudo adduser nexus
+# visudo \\ nexus ALL=(ALL) NOPASSWD: ALL
+sudo chown -R nexus:nexus /opt/nexus
+Open /opt/nexus/bin/nexus.rc file, uncomment run_as_user parameter and set it as following.
+vi /opt/nexus/bin/nexus.rc
+run_as_user="nexus" (file shold have only this line)
+Add nexus as a service at boot time
+sudo ln -s /opt/nexus/bin/nexus /etc/init.d/nexus
+Login as a nexus user and start service
+su - nexus
+service nexus start
+Login nexus server from browser on port 8081
+http://<Nexus_server>:8081
+Use default credentials to login
+username : admin
+password : admin123
+
+  
+  WAR/EAR DEPLOY TO CONTAINER
+==================================
+
+open jenkins 
+create maven project
+in that project github ulr
+12/2/2020
+--------------
+Maven build
+pom.xml
+
+12/3/2020
+--------------
+jenkins theory
+
+12/4/2020
+----------
+build and deployment through jenkins on web server (tomcat)
+
+12/7/2020
+---------------
+Docker introduction
+
+12/9/2020
+----------
+dockerfile
+
+12/10/2020
+-----------
+docker compose
+
+12/11/2020
+------------
+docker-compose sample application
