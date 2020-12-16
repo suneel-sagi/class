@@ -1,0 +1,15 @@
+docker images -q
+This command is used to return only the Image ID’s of the images.
+Containers are instances of Docker images that can be run using the Docker run command. 
+The basic purpose of Docker is to run containers. Let’s discuss how to work with containers.
+
+dcker network ls
+dcker network -f driver=bridge
+
+TO FIND ALL NETWORK IDs AND DRIVERS
+docker network ls --format "{{.ID}}: {{.driver}}"
+docker network create my-network ----> default bridge driver
+docker network connect network_name container
+docker container run -d --name containername --network network_name images
+
+docker compose: Docker Compose is used to run muliple containers as s single service. Compose provide relationship between muliple Containers.

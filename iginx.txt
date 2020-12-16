@@ -1,0 +1,54 @@
+## Credits to John Lieske - https://www.ansible.com/blog/getting-started-writing-your-first-playbook
+---
+- name: Install nginx
+  hosts: host.name.ip
+  become: true
+
+  tasks:
+  - name: Add epel-release repo
+    yum:
+      name: epel-release
+      state: present
+
+  - name: Install nginx
+    yum:
+      name: nginx
+      state: present
+
+  - name: Insert Index Page
+    template:
+      src: index.html
+      dest: /usr/share/nginx/html/index.html
+
+  - name: Start NGiNX
+    service:
+      name: nginx
+      state: started
+	  
+	  
+	  
+
+	  
+---
+- hosts: all
+  sudo: yes
+  tasks:
+
+
+ - name: Enable EPEL
+    command: yum-config-manager --enable epel
+
+  - name: Install remi repo.
+    yum:
+      name: http://rpms.famillecollet.com/enterprise/remi-release-6.rpm
+      state: present
+
+  - name: Import remi GPG key.
+    rpm_key:
+      key: http://rpms.remirepo.net/RPM-GPG-KEY-remi
+      state: present
+
+  - name: be sure MySQL-python is installed
+    yum: name={{ item }} state=installed enablerepo=remi
+    with_items:
+        - MySQL-python

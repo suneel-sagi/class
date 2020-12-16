@@ -1,0 +1,25 @@
+- hosts:
+  tasks:
+    - name:
+	  ec2:
+	    image:
+		key_name:
+		instance_type:
+		count: 1
+		wait: 
+    AWS_ACESS_KEY: {{}}
+	AWS_SECRETE_KEY: {{}}
+	
+	
+	
+	var
+	templetes
+	modules
+	hosts
+	
+
+
+
+
+---
+- hosts:
